@@ -163,8 +163,8 @@ beaudar:
 giscus:
     repo: Cheemsar/Cheemsar.github.io
     repo-id: R_kgDOJX0FRw
-    category: General
-    category-id: DIC_kwDOJX0FR84CV1dP
+    category: Show and tell
+    category-id: DIC_kwDOJX0FR84CV1dS
 # 在使用其它评论组件时可点击显示 Disqus
 lazy_load_disqus : false
 
