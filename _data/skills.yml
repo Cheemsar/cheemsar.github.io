@@ -1,12 +1,12 @@
 - name: Software Engineer Keywords
   keywords:
-      - Java
+      - C#, WPF
       - C++
-      - Python
       - Design Patterns
 
 - name: Mobile Developer Keywords
   keywords:
+      - Kotlin
       - Android
       - Reverse Engineering
 
