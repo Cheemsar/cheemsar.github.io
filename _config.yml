@@ -143,28 +143,28 @@ disqus:
 # gitment 配置参考：https://imsun.net/posts/gitment-introduction/
 gitment:
     owner: Cheemsar
-    repo: Cheemsar.github.io
+    repo: cheemsar.github.io
     oauth:
-        client_id: d2e1cbbd298958076462
-        client_secret: b42a4178e5fd4a7cf63189ef4b1453b05c375709
+        client_id: 
+        client_secret: 
 # gitalk 配置参考：https://github.com/gitalk/gitalk#install
 gitalk:
     owner: Cheemsar
-    repo: Cheemsar.github.io
-    clientID: d2e1cbbd298958076462
-    clientSecret: b42a4178e5fd4a7cf63189ef4b1453b05c375709
+    repo: cheemsar.github.io
+    clientID: 
+    clientSecret: 
 # utterances 配置参考：https://utteranc.es/
 utterances:
-    repo: Cheemsar/Cheemsar.github.io
+    repo: Cheemsar/cheemsar.github.io
 # beaudar 配置参考：https://beaudar.lipk.org/
 beaudar:
-    repo: Cheemsar/Cheemsar.github.io
+    repo: Cheemsar/cheemsar.github.io
 # giscus 配置参考：https://giscus.app/zh-CN
 giscus:
-    repo: Cheemsar/Cheemsar.github.io
+    repo: Cheemsar/cheemsar.github.io
     repo-id: R_kgDOJX0FRw
-    category: Show and tell
-    category-id: DIC_kwDOJX0FR84CV1dS
+    category: Announcements
+    category-id: DIC_kwDOJX0FR84CV1dO
 # 在使用其它评论组件时可点击显示 Disqus
 lazy_load_disqus : false
 
