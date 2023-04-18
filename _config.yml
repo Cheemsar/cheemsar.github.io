@@ -5,13 +5,13 @@ baseurl:
 url: https://cheemsar.github.io
 date_format: "ordinal"
 title: Cheemsar
-subtitle: "Feel and look"
-description: "Cheemsar的个人博客"
+subtitle: "Cheemsar的个人博客"
+description: "Feel and look"
 keywords: Cheemsar
 timezone: Asia/Shanghai
 encoding: "utf-8"
 # 页面左下角显示的年份
-since: 2015
+since: 2023
 # 源码仓库，请替换成自己的
 repository: Cheemsar/cheemsar.github.io
 # 对 css 和 js 资源的 cdn 加速配置
