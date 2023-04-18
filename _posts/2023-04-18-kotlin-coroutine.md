@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Coroutine使用方法
-categories: [Android, Kotlin]
-description: some word here
+categories: [Kotlin]
+description: Coroutine的常用方法
 keywords: Android, Kotlin
 mermaid: false
 sequence: false
