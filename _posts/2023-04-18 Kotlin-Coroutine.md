@@ -16,6 +16,3 @@ Content here
 
 
 Hello World
-
-
-![](../images/posts/kotlin/2023-04-18-10-42-56.png)
