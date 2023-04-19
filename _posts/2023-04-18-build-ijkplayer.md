@@ -24,7 +24,7 @@ mindmap2: false
 
 现在开始。 
 
-# 安装环境
+# 1. 安装环境
 
  - Oracle Java 11
  - Android NDK 14
@@ -33,10 +33,10 @@ mindmap2: false
  - Gradle Plugin 4.2.2
  - Gradle 6.7.1
 
-# 构建过程
+# 2. 构建过程
     编译过程中Ijkplayer的编译说明有些已经无法使用了, 已做了相应更新，编译过程已经能够成功编译。
 
-## 安装之前
+## 2.1. 安装之前
 
 在bash下执行以下命令:
 
@@ -61,9 +61,9 @@ sudo dpkg-reconfigure dash
 ```
 
 
-## 开始编译 ijkPlayer
+## 2.2. 开始编译 ijkPlayer
 
-### 1. 克隆 ijkplayer 并切换到 `k0.8.8`
+### 2.2.1. 克隆 ijkplayer 并切换到 `k0.8.8`
 
 ```
 git clone https://github.com/Bilibili/ijkplayer.git ijkplayer-android
@@ -72,13 +72,13 @@ git checkout -B latest k0.8.8
 ```
 
 
-### 2. 初始化
+### 2.2.2. 初始化
 
 ```
 ./init-android.sh
 ```
 
-### 3. 编译ffmpeg
+### 2.2.3. 编译ffmpeg
 
 在这里卡了很久，一直提示 `ERROR: Failed to create toolchain.`, 解决方法参考文章最后。
 
@@ -91,7 +91,7 @@ git checkout -B latest k0.8.8
 
 ![](/images/posts/android/success.png)
 
-### 4. 编译 ijkplayer
+### 2.2.4. 编译 ijkplayer
 
 ```bash
 ./compile-ijk.sh all 
@@ -101,11 +101,11 @@ git checkout -B latest k0.8.8
 编译完成后，lib会生成到对应 ijkplayer-XXXX/src/main/libs 目录下
 
 
-## 运行Example
+## 2.3. 运行Example
 
 Tisp: 操作过程中，**修改`build.gradle`都需要sync**。 中间遇到问题可以参考文章底下的**疑难解决**。
 
-### 1. 更新 Gradle
+### 2.3.1. 更新 Gradle
 默认 `ijkplayer` 的 Gradle版本如下
 
  - Gradle 2.1.4
@@ -118,7 +118,7 @@ Tisp: 操作过程中，**修改`build.gradle`都需要sync**。 中间遇到问
  - Gradle 6.7.1
  - Gradle Plugin 4.2.2
 
-### 2. 更新 Repository
+### 2.3.2. 更新 Repository
 
 打开 `project` 下的 build.gradle, 添加 repo
 ```groovy
@@ -144,7 +144,7 @@ allprojects {
 
 ```
 
-### 3. 更新 compileSdkVersion
+### 2.3.3. 更新 compileSdkVersion
 
 ```groovy
 ext {
@@ -155,19 +155,19 @@ ext {
 }
 ```
 
-### 4. 更新所有模块引用方式
+### 2.3.4. 更新所有模块引用方式
 
 每个模块中使用的方式 `compile` 改为 `implementation`
 
 ![](/images/posts/android/update-reference-method.png)
 
-### 5. 添加FlavorDimensions
+### 2.3.5. 添加FlavorDimensions
 
 新版的Gradle要求每个Flavor必须要添加 `FlavorDimension` 
 
 ![](/images/posts/android/add-flavor-dimension.png)
 
-### 6. 引用lib并运行 example
+### 2.3.6. 引用lib并运行 example
 
 1. 拷贝 ijkplayer-XXXX/src/main/libs 下的文件目录，到Win上的`Android-Studio`上, 如下。
 ![copy-libs](/images/posts/android/copy-libs.png)
@@ -187,9 +187,9 @@ ext {
 ![Run examples](/images/posts/android/run-example.png)
 
 
-# 疑难解决
+# 3. 疑难解决
 
-## 创建 toolchain 失败
+## 3.1. 创建 toolchain 失败
 
  > Error: Failed to create toolchain
 
@@ -200,33 +200,33 @@ ext {
 
 可以再这里 [Unsupported NDK Download](https://github.com/android/ndk/wiki/Unsupported-DownIoads) 找到 NDK14 版本的NDK。
 
-## 程序包android.test不存在
+## 3.2. 程序包android.test不存在
 
 打开 项目 `build.gradle` 修改 `targetSdkVersion` 以及 `compileSdkVersion` 为 `27`
 
-## 找不到构建工具版本 33.0.0
+## 3.3. 找不到构建工具版本 33.0.0
 
  > Failed to find Build Tools revision 33.0.0
 
 打开 项目 `build.gradle` 修改 `buildToolsVersion` 为 `"30.0.3"`
 
-## NDK 版本问题
+## 3.4. NDK 版本问题
 
  > You need the NDKr10e or later
 
 NDK版本太高了，配置环境变量 `ANDROID_NDK` 指向 `NDK14b 版本` 目录
 
-## 找不到 `libijkffmpeg.so` 文件
+## 3.5. 找不到 `libijkffmpeg.so` 文件
 
  > library "libijkffmpeg.so" not found
 
-### 1. 没有CPU架构对应的ABI
+### 3.5.1. 没有CPU架构对应的ABI
 
 这里卡了很久。默认编译ijkplayer只编译了armv7a， 然后我用的模拟器是CPU架构是x86_64，所以一直提示没有发现 `libijkffmpeg.so`。
 
 ![Can't find the library "libijkffmpeg.so"](/images/posts/android/cant-load-lib.png)
 
-### 2. Ubuntu上编译，然后在Window上引用so 
+### 3.5.2. Ubuntu上编译，然后在Window上引用so 
 
 这边出现的问题是当 将编译好的 `so` 文件拷贝到Window项目如下
 ```gradle
@@ -264,15 +264,15 @@ sourceSets.main {
     }
 ```
 
-### 3. 没有选择正确的Variant
+### 3.5.3. 没有选择正确的Variant
 
 如果你运行基于x86_64架构上运行，而你使用的32位的编译的，也会存在找不到 `so` 文件， 就像我遇到的一样！
 
 ![](/images/posts/android/select-variant-2023-04-19-16-45-14.png)
 
-## 编译 ffmpeg 4.0 出错 
+## 3.6. 编译 ffmpeg 4.0 出错 
 
-### Unknown option "--disable-ffserver".
+### 3.6.1. Unknown option "--disable-ffserver".
 
 出错原因：ffmpeg 4.0 删除了 ffserver
 
@@ -283,7 +283,7 @@ export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-ffserver"
 export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-vda"
 ```
 
-### error: undefined reference to 'ff_ac3_parse_header'
+### 3.6.2. error: undefined reference to 'ff_ac3_parse_header'
 
 出错原因：ffmpeg 4.0 不再支持 eac3
 解决方案：禁掉 eac3，参考链接，修改 config/module.sh 文件，增加如下一行：
@@ -299,10 +299,11 @@ export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-bsf=eac3_core"
  - 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 
-# 参考
+# 4. 参考
 
 Android ijkplayer 编译踩坑与记录(ijk0.8.8--ffmpeg4.0)
 [https://juejin.cn/post/7213307533279182908]
 
 android NDK - make standalone toolchain fail
 [https://stackoverflow.com/questions/19142886/android-ndk-make-standalone-toolchain-fails]
+
