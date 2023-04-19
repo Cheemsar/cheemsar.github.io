@@ -191,7 +191,9 @@ ext {
 
 # 疑难解决
 
-## Error: Failed to create toolchain
+## 创建 toolchain 失败
+
+ > Error: Failed to create toolchain
 
 有很多错误会导致出现这个问题，如没有安装`python`, 或者`NDK > 14`等。。
 
@@ -200,19 +202,25 @@ ext {
 
 可以再这里 [Unsupported NDK Download](https://github.com/android/ndk/wiki/Unsupported-DownIoads) 找到 NDK14 版本的NDK。
 
-## 错误： 程序包android.test不存在
+## 程序包android.test不存在
 
 打开 项目 `build.gradle` 修改 `targetSdkVersion` 以及 `compileSdkVersion` 为 `27`
 
-## Failed to find Build Tools revision 33.0.0
+## 找不到构建工具版本 33.0.0
+
+ > Failed to find Build Tools revision 33.0.0
 
 打开 项目 `build.gradle` 修改 `buildToolsVersion` 为 `"30.0.3"`
 
-## You need the NDKr10e or later
+## NDK 版本问题
+
+ > You need the NDKr10e or later
 
 NDK版本太高了，配置环境变量 `ANDROID_NDK` 指向 `NDK14b 版本` 目录
 
-## library "libijkffmpeg.so" not found
+## 找不到 `libijkffmpeg`
+
+ > library "libijkffmpeg.so" not found
 
 ### 1. 没有CPU架构对应的ABI
 
@@ -263,6 +271,34 @@ sourceSets.main {
 如果你运行基于x86_64架构上运行，而你使用的32位的编译的，也会存在找不到 `so` 文件， 就像我遇到的一样！
 
 ![](/images/posts/android/select-variant-2023-04-19-16-45-14.png)
+
+## 编译 ffmpeg 4.0 出错 
+
+### Unknown option "--disable-ffserver".
+
+出错原因：ffmpeg 4.0 删除了 ffserver
+
+解决方案：注释掉 ffserver 配置，参考链接，修改 config/module.sh 文件，注释掉以下两行：
+
+```bash
+export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-ffserver"
+export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-vda"
+```
+
+### error: undefined reference to 'ff_ac3_parse_header'
+
+出错原因：ffmpeg 4.0 不再支持 eac3
+解决方案：禁掉 eac3，参考链接，修改 config/module.sh 文件，增加如下一行：
+
+```bash
+# 在 export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-bsfs" 下方添加：
+export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-bsf=eac3_core"
+```
+
+ - 作者：星海流萤
+ - 链接：https://juejin.cn/post/7213307533279182908
+ - 来源：稀土掘金
+ - 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 
 # 参考
