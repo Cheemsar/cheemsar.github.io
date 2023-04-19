@@ -14,6 +14,8 @@ mindmap2: false
 
 最近在研究`Android`上播放视频，自然是绕不过 `ijkplayer`。 其中在编译 `ijkplayer` 的过程中学习到很多概念，也踩了很多坑。 在此记录一下。
 
+![run-samples-video](/images/posts/android/run-samples-video.png)
+
 主要问题来自几个方面：
   1. Gradle 版本 2.1.4 不支持最新版本的AS编译， 需要更新Gradle版本。
   2. Window上MingW不支持Homwbrew，需要手动安装，所以放弃在Win上编译，转战到Ubuntu上编译so，在Window下引用so来编译应用。
