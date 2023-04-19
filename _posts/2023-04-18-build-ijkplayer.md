@@ -15,11 +15,10 @@ mindmap2: false
 最近在研究`Android`上播放视频，自然是绕不过 `ijkplayer`。 其中在编译 `ijkplayer` 的过程中学习到很多概念，也踩了很多坑。 在此记录一下。
 
 主要问题来自几个方面：
-  1. Android-Studio 版本问题， Gradle插件2.1.4 不支持最新版本的 AS， 需要更新AS
-  2. 安装HomeBrew方式在Window上MingW不支持，需要手动安装，所以放弃在Win上编译，转战到Ubuntu上编译so，在Window下引用so编译应用。
-  3. 需要使用不受支持的NDK版本才能编译 NDK14
-  4. 编译 ijkplayer-example需要升级Gradle
-  5. 对于适配多种CPU架构，编译多个ABI版本so
+  1. Gradle 版本 2.1.4 不支持最新版本的AS编译， 需要更新Gradle版本。
+  2. Window上MingW不支持Homwbrew，需要手动安装，所以放弃在Win上编译，转战到Ubuntu上编译so，在Window下引用so来编译应用。
+  3. 需要使用**已不受支持的NDK版本(NDK14)**才能编译。
+  4. 对于适配多种CPU架构，编译多个ABI版本 lib。
 
 以下编译过程按照官方默认的方式编译，即不支持`https`以及`ffmpeg`为3.4版本。 如果后续需要适配`https`编译，也会同步更新到此博文。
 
@@ -45,12 +44,12 @@ mindmap2: false
 # install homebrew
 # 这个已经不支持了 
 # ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # install git, yasm
 brew install git
 brew install yasm
+
 # 设置 SDK 以及 NDK (超过14则需要改代码,所以目前最好用14)
 # add these lines to your ~/.bash_profile or ~/.profile
 export ANDROID_SDK=<your sdk path>
@@ -62,9 +61,9 @@ sudo dpkg-reconfigure dash
 ```
 
 
-## 构建IjkPlayer
+## 开始编译 ijkPlayer
 
-### Clone ijkplayer 
+### 克隆 ijkplayer 并切换到 `k0.8.8`
 
 ```
 git clone https://github.com/Bilibili/ijkplayer.git ijkplayer-android
@@ -99,11 +98,10 @@ git checkout -B latest k0.8.8
 ```
 ![build-ijkplayer](/images/posts/android/build-ijkplayer.png)
 
-
 编译完成后，lib会生成到对应 ijkplayer-XXXX/src/main/libs 目录下
 
 
-## 编译Example
+## 运行Example
 
 Tisp: 操作过程中，**修改`build.gradle`都需要sync**。 中间遇到问题可以参考文章底下的**疑难解决**。
 
