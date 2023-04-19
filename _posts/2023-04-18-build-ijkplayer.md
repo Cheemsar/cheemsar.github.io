@@ -63,7 +63,7 @@ sudo dpkg-reconfigure dash
 
 ## 开始编译 ijkPlayer
 
-### 克隆 ijkplayer 并切换到 `k0.8.8`
+### 1. 克隆 ijkplayer 并切换到 `k0.8.8`
 
 ```
 git clone https://github.com/Bilibili/ijkplayer.git ijkplayer-android
@@ -72,13 +72,13 @@ git checkout -B latest k0.8.8
 ```
 
 
-### 初始化
+### 2. 初始化
 
 ```
 ./init-android.sh
 ```
 
-### 编译ffmpeg
+### 3. 编译ffmpeg
 
 在这里卡了很久，一直提示 `ERROR: Failed to create toolchain.`, 解决方法参考文章最后。
 
@@ -91,7 +91,7 @@ git checkout -B latest k0.8.8
 
 ![](/images/posts/android/success.png)
 
-### 编译 ijkplayer
+### 4. 编译 ijkplayer
 
 ```bash
 ./compile-ijk.sh all 
@@ -144,7 +144,7 @@ allprojects {
 
 ```
 
-### 更新 compileSdkVersion
+### 3. 更新 compileSdkVersion
 
 ```groovy
 ext {
@@ -155,19 +155,19 @@ ext {
 }
 ```
 
-### 更新所有模块引用方式
+### 4. 更新所有模块引用方式
 
 每个模块中使用的方式 `compile` 改为 `implementation`
 
 ![](/images/posts/android/update-reference-method.png)
 
-### 添加FlavorDimensions
+### 5. 添加FlavorDimensions
 
 新版的Gradle要求每个Flavor必须要添加 `FlavorDimension` 
 
 ![](/images/posts/android/add-flavor-dimension.png)
 
-### 引用lib并运行 example
+### 6. 引用lib并运行 example
 
 1. 拷贝 ijkplayer-XXXX/src/main/libs 下的文件目录，到Win上的`Android-Studio`上, 如下。
 ![copy-libs](/images/posts/android/copy-libs.png)
@@ -216,7 +216,7 @@ ext {
 
 NDK版本太高了，配置环境变量 `ANDROID_NDK` 指向 `NDK14b 版本` 目录
 
-## 找不到 `libijkffmpeg`
+## 找不到 `libijkffmpeg.so` 文件
 
  > library "libijkffmpeg.so" not found
 
