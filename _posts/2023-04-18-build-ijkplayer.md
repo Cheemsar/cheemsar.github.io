@@ -301,5 +301,8 @@ export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-bsf=eac3_core"
 
 # 参考
 
-Android ijkplayer 编译踩坑与记录(ijk0.8.8--ffmpeg4.0)  [https://juejin.cn/post/7213307533279182908]
-android NDK - make standalone toolchain fail [https://stackoverflow.com/questions/19142886/android-ndk-make-standalone-toolchain-fails]
+Android ijkplayer 编译踩坑与记录(ijk0.8.8--ffmpeg4.0)
+[https://juejin.cn/post/7213307533279182908]
+
+android NDK - make standalone toolchain fail
+[https://stackoverflow.com/questions/19142886/android-ndk-make-standalone-toolchain-fails]
