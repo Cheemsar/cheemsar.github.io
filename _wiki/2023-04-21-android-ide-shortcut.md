@@ -1,8 +1,8 @@
 ---
 layout: wiki
 title: Android Studio 常用快捷键
-cate1:
-cate2:
+cate1: Android
+cate2: 提高生产力
 description: 提升Android开发效率，IDE使用心得
 keywords: Android
 type:
@@ -30,17 +30,24 @@ mindmap2: false
 3. 折叠单个  `Ctrl + Number -`
 4. 递归折叠所有后代 `Ctrl + Alt + Number -`
 
-## 展开文档
+## 展开文档折叠
 
 1. 展开文档所有折叠 `Ctrl + Shift + Number +`
 2. 折叠文档所有折叠 `Ctrl + Shift + Number -`
 
-## 展开至某级
+## 展开选中项至某级
 
 1. 展开到 1 级 `Ctrl + Number *` then `Number 1`
 2. 展开到 2 级 `Ctrl + Number *` then `Number 2`
 3. 展开到 3 级 `Ctrl + Number *` then `Number 3`
 4. 展开到 4 级 `Ctrl + Number *` then `Number 3`
+
+## 展开文档折叠至某级
+
+1. 展开到 1 级 `Ctrl + Shift + Number *` then `Number 1`
+2. 展开到 2 级 `Ctrl + Shift + Number *` then `Number 2`
+3. 展开到 3 级 `Ctrl + Shift + Number *` then `Number 3`
+4. 展开到 4 级 `Ctrl + Shift + Number *` then `Number 3`
 
 PS: 上面的 `Number *` 需要小键盘支持，没有小键盘的同学需要手动修改下快捷键，我个人配置了 `Ctrl + Alt + 1` 。
 
