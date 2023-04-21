@@ -1,6 +1,6 @@
 - name: Software Engineer Keywords
   keywords:
-      - C#, WPF
+      - C#, WPF, AspNet.MVC
       - C++
       - Design Patterns
 
@@ -12,8 +12,5 @@
 
 - name: Windows Developer Keywords
   keywords:
-      - Win32 SDK
-      - DuiLib
-      - WTL
-      - COM
-      - WinDbg
+      - Win32
+      - Winform
