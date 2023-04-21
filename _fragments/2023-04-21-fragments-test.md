@@ -1,7 +1,7 @@
 ---
 layout: fragment
-title: Fragment Template
-tags: [tag1, tag2]
+title: Fragment Test
+tags: [tag1]
 description: some word here
 keywords: keyword1, keyword2
 mermaid: false
