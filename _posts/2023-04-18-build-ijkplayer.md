@@ -1,7 +1,7 @@
 ---
 layout: post
 title: IjkPlayer 构建记录
-categories: [Android, Ijkplayer]
+categories: [Android]
 description: IjkPlayer构建中踩过得一些坑
 keywords: Ijkplayer, Android
 mermaid: false
